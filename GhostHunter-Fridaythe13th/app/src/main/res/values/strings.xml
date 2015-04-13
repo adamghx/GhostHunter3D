@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Ghost Hunter - Friday the 13th</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="GhostHunterTitle">Welcome to Ghost Hunter!</string>
+    <string name="names">Presented by\n Adam Guo, Christian Lastova,\nMaurice Wong, Emily Zhou</string>
+</resources>
