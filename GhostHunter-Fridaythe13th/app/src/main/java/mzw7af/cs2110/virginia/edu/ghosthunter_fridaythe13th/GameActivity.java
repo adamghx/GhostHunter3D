@@ -36,6 +36,7 @@ public class GameActivity extends Activity {
         joystickball_image.setY(joystick_cy);
         Toast.makeText(getApplicationContext(), Float.toString(joystick_cx),
                 Toast.LENGTH_LONG).show();
+        //comment
     }
 
     protected void onResume() {
