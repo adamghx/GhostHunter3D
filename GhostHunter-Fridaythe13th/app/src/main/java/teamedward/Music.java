@@ -1,4 +1,4 @@
-package mzw7af.cs2110.virginia.edu.ghosthunter_fridaythe13th;
+package teamedward;
 
 /**
  * Created by Emily on 4/14/2015.
