@@ -19,7 +19,7 @@ public class GameActivity extends Activity {
     private ImageView character_image;
     private ImageView joystickback_image;
     private ImageView joystickball_image;
-
+//Emily's comment
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
