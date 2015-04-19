@@ -18,8 +18,8 @@
         <activity
             android:name=".GhostGame"
             android:configChanges="keyboard|keyboardHidden|orientation"
-            android:label="SampleGame"
-            android:screenOrientation="landscape" >
+            android:label="Ghost hunter"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
