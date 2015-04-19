@@ -16,14 +16,10 @@ public class LoadingScreen extends Screen {
     @Override
     public void update(float deltaTime) {
         Graphics g = game.getGraphics();
-        Assets.menu = g.newImage("menu.jpg", ImageFormat.RGB565);
-        Assets.click = game.getAudio().createSound("explode.ogg");
-
-
+        Assets.menu = g.newImage("moonbackground.png", ImageFormat.RGB565);
+//        Assets.click = game.getAudio().createSound("explode.ogg");
 
         game.setScreen(new MainMenuScreen(game));
-
-
     }
 
 
