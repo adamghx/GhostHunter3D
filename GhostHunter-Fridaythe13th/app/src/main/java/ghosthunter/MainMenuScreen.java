@@ -28,7 +28,7 @@ public class MainMenuScreen extends Screen {
 
                 if (inBounds(event, 0, 0, 250, 250)) {
                     //START GAME
-                    game.setScreen(new GhostGameScreen(game));
+                    game.setScreen(new GameScreen(game));
                 }
 
 
