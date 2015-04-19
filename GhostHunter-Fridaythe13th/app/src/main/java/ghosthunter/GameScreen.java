@@ -8,11 +8,11 @@ import java.util.List;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-import com.kilobolt.framework.Game;
-import com.kilobolt.framework.Graphics;
-import com.kilobolt.framework.Image;
-import com.kilobolt.framework.Screen;
-import com.kilobolt.framework.Input.TouchEvent;
+import framework.Game;
+import framework.Graphics;
+import framework.Image;
+import framework.Screen;
+import framework.Input.TouchEvent;
 
 public class GameScreen extends Screen {
     enum GameState {
