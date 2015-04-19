@@ -14,11 +14,11 @@
 
     <application
         android:icon="@drawable/launcher_icon"
-        android:label="SampleGame" >
+        android:label="Ghost Hunter" >
         <activity
             android:name=".GhostGame"
             android:configChanges="keyboard|keyboardHidden|orientation"
-            android:label="Ghost hunter"
+            android:label="GhostGame"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
