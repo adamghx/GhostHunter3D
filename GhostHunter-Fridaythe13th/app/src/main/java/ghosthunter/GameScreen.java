@@ -7,7 +7,6 @@ import java.util.List;
 
 import android.graphics.Color;
 import android.graphics.Paint;
-
 import framework.Game;
 import framework.Graphics;
 import framework.Image;
