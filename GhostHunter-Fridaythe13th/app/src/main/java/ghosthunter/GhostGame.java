@@ -23,4 +23,11 @@ public class GhostGame extends AndroidGame {
 
         Assets.theme.play();
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Assets.theme.pause();
+
+    }
 }
