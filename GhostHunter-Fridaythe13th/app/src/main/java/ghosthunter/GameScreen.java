@@ -22,15 +22,15 @@ public class GameScreen extends Screen {
 
     // Variable Setup
     // You would create game objects here.
-
+    private static Human human;
     int livesLeft = 1;
     Paint paint;
-
+    int xspeed = 5;
     public GameScreen(Game game) {
         super(game);
 
         // Initialize game objects here
-
+        human = new Human();
         // Defining a paint object
         paint = new Paint();
         paint.setTextSize(30);
@@ -74,7 +74,7 @@ public class GameScreen extends Screen {
 
         //This is identical to the update() method from our Unit 2/3 game.
 
-
+        Graphics g = game.getGraphics();
         // 1. All touch input is handled here:
         int len = touchEvents.size();
         for (int i = 0; i < len; i++) {
@@ -83,11 +83,12 @@ public class GameScreen extends Screen {
             if (event.type == TouchEvent.TOUCH_DOWN) {
 
                 if (event.x < 640) {
-                    // Move left.
+                   human.moveLeft();
+
                 }
 
                 else if (event.x > 640) {
-                    // Move right.
+                    human.moveRight();
                 }
 
             }
@@ -116,7 +117,7 @@ public class GameScreen extends Screen {
         // 3. Call individual update() methods here.
         // This is where all the game updates happen.
         // For example, robot.update();
-
+        human.update();
     }
 
     private void updatePaused(List<TouchEvent> touchEvents) {
@@ -150,7 +151,7 @@ public class GameScreen extends Screen {
         Graphics g = game.getGraphics();
 
         // First draw the game elements.
-
+        g.drawImage(Assets.human,human.getCenterX(),human.getCenterY());
         // Example:
         // g.drawImage(Assets.background, 0, 0);
         // g.drawImage(Assets.character, characterX, characterY);

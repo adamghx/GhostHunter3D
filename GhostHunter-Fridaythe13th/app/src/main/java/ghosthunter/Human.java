@@ -11,28 +11,29 @@ import framework.Image;
 
 
 public class Human {
-    private float centerX, centerY;
+    private int centerX, centerY, xspeed;
     private Rect humanBox;
     private Image human;
 
     public Human() {
-        this.centerX = 0;
-        this.centerY = 0;
-        this.humanBox = new Rect(0, 0, human.getWidth(), human.getHeight());
+        this.centerX = 250;
+        this.centerY = 250;
         this.human = Assets.human;
+        this.humanBox = new Rect(centerX, centerY,centerX + human.getWidth(), centerY + human.getHeight());
+        xspeed = 5;
     }
 
     //Called in the GameScreen
     public void update(){
-
+        humanBox.set(this.centerX, this.centerY, centerX+human.getWidth(), centerY+human.getHeight());
     }
 
     //These are the accessors
-    public float getCenterX(){
+    public int getCenterX(){
         return this.centerX;
     }
 
-    public float getCenterY(){
+    public int getCenterY(){
         return this.centerY;
     }
 
@@ -44,15 +45,23 @@ public class Human {
         return this.human;
     }
     //These are the mutators
-    public void setCenterX(float x){
+    public void setCenterX(int x){
         this.centerX = x;
     }
 
-    public void setCenterY(float y){
+    public void setCenterY(int y){
         this.centerY = y;
     }
 
     public void setHumanBox(Rect rect){
         this.humanBox = rect;
+    }
+
+
+    public void moveLeft() {
+        this.centerX-=xspeed;
+    }
+    public void moveRight() {
+        this.centerX+=xspeed;
     }
 }
