@@ -10,6 +10,7 @@ import framework.Music;
 public class Assets {
 
     public static Image menu;
+    public static Image human;
     public static Sound click;
     public static Music theme;
 

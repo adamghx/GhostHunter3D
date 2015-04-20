@@ -116,6 +116,7 @@ public class GameScreen extends Screen {
         // 3. Call individual update() methods here.
         // This is where all the game updates happen.
         // For example, robot.update();
+
     }
 
     private void updatePaused(List<TouchEvent> touchEvents) {
