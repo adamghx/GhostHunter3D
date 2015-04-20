@@ -14,7 +14,7 @@ public class GhostGame extends AndroidGame {
             Assets.load(this);
             firstTimeCreate = false;
         }
-        return new LoadingScreen(this);
+        return new SplashLoadingScreen(this);
     }
 
     @Override

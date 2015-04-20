@@ -13,6 +13,8 @@ public class Assets {
     public static Image human;
     public static Sound click;
     public static Music theme;
+    public static Image background;
+    public static Image splash;
 
     public static void load(GhostGame sampleGame) {
         // TODO Auto-generated method stub

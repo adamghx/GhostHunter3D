@@ -4,9 +4,12 @@ package ghosthunter;
  * Created by adamguo on 4/19/15.
  */
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 import android.graphics.Color;
 import android.graphics.Paint;
+
 import framework.Game;
 import framework.Graphics;
 import framework.Image;
@@ -22,7 +25,16 @@ public class GameScreen extends Screen {
 
     // Variable Setup
     // You would create game objects here.
+<<<<<<< Updated upstream
     private static Human human;
+=======
+<<<<<<< HEAD
+    private Image bg1;
+
+=======
+    private static Human human;
+>>>>>>> origin/master
+>>>>>>> Stashed changes
     int livesLeft = 1;
     Paint paint;
     int xspeed = 5;
@@ -30,7 +42,16 @@ public class GameScreen extends Screen {
         super(game);
 
         // Initialize game objects here
+<<<<<<< Updated upstream
         human = new Human();
+=======
+<<<<<<< HEAD
+
+        bg1 = new Background(0, 0);
+=======
+        human = new Human();
+>>>>>>> origin/master
+>>>>>>> Stashed changes
         // Defining a paint object
         paint = new Paint();
         paint.setTextSize(30);
@@ -156,8 +177,8 @@ public class GameScreen extends Screen {
         // First draw the game elements.
         g.drawImage(Assets.human,human.getCenterX(),human.getCenterY());
         // Example:
-        // g.drawImage(Assets.background, 0, 0);
-        // g.drawImage(Assets.character, characterX, characterY);
+        //g.drawImage(Assets.background, 0, 0);
+        //g.drawImage(Assets.character, characterX, characterY);
 
         // Secondly, draw the UI above the game elements.
         if (state == GameState.Ready)
