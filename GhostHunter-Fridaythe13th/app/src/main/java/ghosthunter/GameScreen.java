@@ -25,33 +25,19 @@ public class GameScreen extends Screen {
 
     // Variable Setup
     // You would create game objects here.
-<<<<<<< Updated upstream
-    private static Human human;
-=======
-<<<<<<< HEAD
-    private Image bg1;
 
-=======
+
+
+    private Image bg1;
     private static Human human;
->>>>>>> origin/master
->>>>>>> Stashed changes
+
     int livesLeft = 1;
     Paint paint;
-    int xspeed = 5;
     public GameScreen(Game game) {
         super(game);
 
-        // Initialize game objects here
-<<<<<<< Updated upstream
         human = new Human();
-=======
-<<<<<<< HEAD
 
-        bg1 = new Background(0, 0);
-=======
-        human = new Human();
->>>>>>> origin/master
->>>>>>> Stashed changes
         // Defining a paint object
         paint = new Paint();
         paint.setTextSize(30);
