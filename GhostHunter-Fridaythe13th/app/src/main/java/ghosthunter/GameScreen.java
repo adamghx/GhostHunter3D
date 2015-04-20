@@ -15,7 +15,9 @@ import framework.Graphics;
 import framework.Image;
 import framework.Screen;
 import framework.Input.TouchEvent;
+import framework_implementation.AndroidGraphics;
 
+//Android Screen Dimensions: 960dp X 720dp
 public class GameScreen extends Screen {
     enum GameState {
         Ready, Running, Paused, GameOver
@@ -166,6 +168,7 @@ public class GameScreen extends Screen {
         g.clearScreen(Color.BLACK);
         // First draw the game elements.
         g.drawImage(Assets.human,human.getCenterX(),human.getCenterY());
+        ((AndroidGraphics)g).drawScaledImage(Assets.joystick_background, 30, 950, 300, 300, 0,0, Assets.joystick_background.getWidth(),Assets.joystick_background.getHeight());
         // Example:
         //g.drawImage(Assets.background, 0, 0);
         //g.drawImage(Assets.character, characterX, characterY);

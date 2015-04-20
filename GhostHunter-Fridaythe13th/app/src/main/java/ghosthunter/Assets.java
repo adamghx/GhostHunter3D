@@ -15,6 +15,7 @@ public class Assets {
     public static Music theme;
     public static Image background;
     public static Image splash;
+    public static Image joystick_background;
 
     public static void load(GhostGame sampleGame) {
         // TODO Auto-generated method stub
