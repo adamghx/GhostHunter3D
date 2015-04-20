@@ -14,6 +14,8 @@ public class Human {
     private int centerX, centerY, xspeed;
     private Rect humanBox;
     private Image human;
+    private boolean isMovingLeft=false;
+    private boolean isMovingRight=false;
 
     public Human() {
         this.centerX = 250;
@@ -26,6 +28,13 @@ public class Human {
     //Called in the GameScreen
     public void update(){
         humanBox.set(this.centerX, this.centerY, centerX+human.getWidth(), centerY+human.getHeight());
+        if(this.isMovingLeft==true) {
+            centerX-=xspeed;
+        }
+        if(this.isMovingRight==true) {
+            centerX+=xspeed;
+        }
+
     }
 
     //These are the accessors
@@ -63,5 +72,13 @@ public class Human {
     }
     public void moveRight() {
         this.centerX+=xspeed;
+    }
+
+    public void setMovingLeft(boolean b) {
+        isMovingLeft = b;
+    }
+
+    public void setMovingRight(boolean b) {
+        isMovingRight = b;
     }
 }

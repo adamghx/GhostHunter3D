@@ -101,17 +101,19 @@ public class GameScreen extends Screen {
         for (int i = 0; i < len; i++) {
             TouchEvent event = touchEvents.get(i);
 
-            if (event.type == TouchEvent.TOUCH_DOWN) {
+            if (event.type == TouchEvent.TOUCH_DRAGGED || event.type == TouchEvent.TOUCH_DOWN) {
 
-                if (event.x < 640) {
-                   human.moveLeft();
+                if (event.x < 360) {
+
                    human.setMovingLeft(true);
+                   human.setMovingRight(false);
 
                 }
 
-                else if (event.x > 640) {
-                    human.moveRight();
+                else if (event.x > 360) {
+
                     human.setMovingRight(true);
+                    human.setMovingLeft(false);
                 }
 
             }
@@ -121,10 +123,12 @@ public class GameScreen extends Screen {
                 if (event.x < 640) {
                     // Stop moving left.
                     human.setMovingLeft(false);
+                    human.setMovingRight(false);
                 }
 
                 else if (event.x > 640) {
                     human.setMovingRight(false);
+                    human.setMovingLeft(false);
                 }
             }
 
