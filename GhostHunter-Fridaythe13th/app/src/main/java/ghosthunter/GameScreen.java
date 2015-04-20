@@ -84,11 +84,13 @@ public class GameScreen extends Screen {
 
                 if (event.x < 640) {
                    human.moveLeft();
+                   human.setMovingLeft(true);
 
                 }
 
                 else if (event.x > 640) {
                     human.moveRight();
+                    human.setMovingRight(true);
                 }
 
             }
@@ -97,10 +99,11 @@ public class GameScreen extends Screen {
 
                 if (event.x < 640) {
                     // Stop moving left.
+                    human.setMovingLeft(false);
                 }
 
                 else if (event.x > 640) {
-                    // Stop moving right. }
+                    human.setMovingRight(false);
                 }
             }
 
@@ -149,7 +152,7 @@ public class GameScreen extends Screen {
     @Override
     public void paint(float deltaTime) {
         Graphics g = game.getGraphics();
-
+        g.clearScreen(Color.BLACK);
         // First draw the game elements.
         g.drawImage(Assets.human,human.getCenterX(),human.getCenterY());
         // Example:
