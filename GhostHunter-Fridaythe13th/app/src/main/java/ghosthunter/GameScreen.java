@@ -37,6 +37,7 @@ public class GameScreen extends Screen {
     private ArrayList<Ghost> ghosts;
     private Joystick joystick;
     private Rect joystickSpace;
+    private int counter;
     int joystickMovement = 0;
     int livesLeft = 1;
     Paint paint;
@@ -48,6 +49,7 @@ public class GameScreen extends Screen {
         this.ghosts = new ArrayList<Ghost>();
         joystick = new Joystick();
         joystickSpace = joystick.getJoystickRect();
+        this.counter = 0;
         // Defining a paint object
         paint = new Paint();
         paint.setTextSize(30);
@@ -171,14 +173,18 @@ public class GameScreen extends Screen {
         if (livesLeft == 0) {
             state = GameState.GameOver;
         }
-        if
+
+        counter += 1;
+        if(counter % 100 == 0){
+            ghosts.add(new Ghost(human));
+        }
 
 
         // 3. Call individual update() methods here.
         // This is where all the game updates happen.
         // For example, robot.update();
         human.update();
-        for(ghost : ghosts){
+        for(Ghost ghost : ghosts){
             ghost.update();
         }
 
