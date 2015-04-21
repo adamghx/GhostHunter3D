@@ -219,19 +219,16 @@ public class GameScreen extends Screen {
     @Override
     public void paint(float deltaTime) {
         Graphics g = game.getGraphics();
-<<<<<<< HEAD
 
         ((AndroidGraphics)g).drawScaledImage(Assets.background, 0, 0, 800, 1280, 0, 0, Assets.background.getWidth(), Assets.background.getHeight());
 
         //g.drawImage(Assets.background, 0, 0, 2000, 1000, this);
-        g.clearScreen(Color.BLACK);
+        //g.clearScreen(Color.BLACK);
 
         // First draw the game elements.
-=======
         //Draw the background
         ((AndroidGraphics)g).drawScaledImage(Assets.background, 0, 0, 800, 1280, 0, 0, Assets.background.getWidth(), Assets.background.getHeight());
         // Then draw the game elements.
->>>>>>> origin/master
         g.drawImage(Assets.human,human.getCenterX(),human.getCenterY());
         for(Ghost ghost : ghosts){
             g.drawImage(Assets.ghost,ghost.getCenterX(),ghost.getCenterY());
