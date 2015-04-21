@@ -205,7 +205,7 @@ public class GameScreen extends Screen {
     @Override
     public void paint(float deltaTime) {
         Graphics g = game.getGraphics();
-        g.clearScreen(Color.BLACK);
+        ((AndroidGraphics)g).drawScaledImage(Assets.background, 0, 0, 800, 1280, 0, 0, Assets.background.getWidth(), Assets.background.getHeight());
         // First draw the game elements.
         g.drawImage(Assets.human,human.getCenterX(),human.getCenterY());
         ((AndroidGraphics)g).drawScaledImage(joystick.getJoystickBackground(), joystick.getxCoor(), joystick.getyCoor(), 300, 300, 0,0, Assets.joystick_background.getWidth(),Assets.joystick_background.getHeight());
