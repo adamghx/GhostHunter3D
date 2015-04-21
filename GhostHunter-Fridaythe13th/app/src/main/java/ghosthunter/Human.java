@@ -24,7 +24,7 @@ public class Human {
         this.centerY = 250;
         this.human = Assets.human;
         this.humanBox = new Rect(centerX, centerY,centerX + human.getWidth(), centerY + human.getHeight());
-        speed = 5;
+        speed = 7;
     }
 
     //Called in the GameScreen

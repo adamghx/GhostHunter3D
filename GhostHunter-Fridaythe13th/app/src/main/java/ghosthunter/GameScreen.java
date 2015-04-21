@@ -173,8 +173,10 @@ public class GameScreen extends Screen {
         }
 
         counter += 1;
-        if(counter % 100 == 0){
-            ghosts.add(new Ghost(human));
+        if(counter % 150 == 0){
+            if(ghosts.size() < 10) {
+                ghosts.add(new Ghost(human));
+            }
         }
 
 
