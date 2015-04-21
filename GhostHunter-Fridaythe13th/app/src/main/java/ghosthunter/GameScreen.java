@@ -223,6 +223,9 @@ public class GameScreen extends Screen {
         // First draw the game elements.
         g.drawImage(Assets.human,human.getCenterX(),human.getCenterY());
         ((AndroidGraphics)g).drawScaledImage(joystick.getJoystickBackground(), joystick.getxCoor(), joystick.getyCoor(), 300, 300, 0,0, Assets.joystick_background.getWidth(),Assets.joystick_background.getHeight());
+        for(Ghost ghost : ghosts){
+            g.drawImage(Assets.ghost,ghost.getCenterX(),ghost.getCenterY());
+        }
         // Example:
         //g.drawImage(Assets.background, 0, 0);
         //g.drawImage(Assets.character, characterX, characterY);
