@@ -11,28 +11,36 @@ import framework.Image;
 
 
 public class Human {
-    private int centerX, centerY, xspeed;
+    private int centerX, centerY, speed;
     private Rect humanBox;
     private Image human;
     private boolean isMovingLeft=false;
     private boolean isMovingRight=false;
+    private boolean isMovingUp=false;
+    private boolean isMovingDown=false;
 
     public Human() {
         this.centerX = 250;
         this.centerY = 250;
         this.human = Assets.human;
         this.humanBox = new Rect(centerX, centerY,centerX + human.getWidth(), centerY + human.getHeight());
-        xspeed = 5;
+        speed = 5;
     }
 
     //Called in the GameScreen
     public void update(){
         humanBox.set(this.centerX, this.centerY, centerX+human.getWidth(), centerY+human.getHeight());
         if(this.isMovingLeft==true) {
-            centerX-=xspeed;
+            centerX-=speed;
         }
         if(this.isMovingRight==true) {
-            centerX+=xspeed;
+            centerX+=speed;
+        }
+        if(this.isMovingUp==true) {
+            centerY-=speed;
+        }
+        if(this.isMovingDown==true) {
+            centerY+=speed;
         }
 
     }
@@ -68,10 +76,10 @@ public class Human {
 
 
     public void moveLeft() {
-        this.centerX-=xspeed;
+        this.centerX-=speed;
     }
     public void moveRight() {
-        this.centerX+=xspeed;
+        this.centerX+=speed;
     }
 
     public void setMovingLeft(boolean b) {
@@ -80,5 +88,13 @@ public class Human {
 
     public void setMovingRight(boolean b) {
         isMovingRight = b;
+    }
+
+    public void setMovingUp(boolean b) {
+        isMovingUp = b;
+    }
+
+    public void setMovingDown(boolean b) {
+        isMovingDown = b;
     }
 }

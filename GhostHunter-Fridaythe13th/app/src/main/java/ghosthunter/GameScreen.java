@@ -9,6 +9,8 @@ import java.util.Scanner;
 
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
+import android.util.Log;
 
 import framework.Game;
 import framework.Graphics;
@@ -32,14 +34,17 @@ public class GameScreen extends Screen {
 
     private Image bg1;
     private static Human human;
-
+    private Joystick joystick;
+    private Rect joystickSpace;
+    int joystickMovement = 0;
     int livesLeft = 1;
     Paint paint;
     public GameScreen(Game game) {
         super(game);
 
         human = new Human();
-
+        joystick = new Joystick();
+        joystickSpace = joystick.getJoystickRect();
         // Defining a paint object
         paint = new Paint();
         paint.setTextSize(30);
@@ -86,12 +91,41 @@ public class GameScreen extends Screen {
         Graphics g = game.getGraphics();
         // 1. All touch input is handled here:
         int len = touchEvents.size();
+
         for (int i = 0; i < len; i++) {
             TouchEvent event = touchEvents.get(i);
 
             if (event.type == TouchEvent.TOUCH_DRAGGED || event.type == TouchEvent.TOUCH_DOWN) {
-
-                if (event.x < 360) {
+                Log.d("touch", "touch");
+                if (joystickSpace.contains(event.x, event.y)) {
+                    Log.d("contains", "contains");
+                   joystickMovement = joystick.determineMovement(event.x, event.y);
+                }
+                if (joystickMovement == 1) {
+                    human.setMovingUp(true);
+                    human.setMovingDown(false);
+                    human.setMovingLeft(false);
+                    human.setMovingRight(false);
+                }
+                if (joystickMovement == 2) {
+                    human.setMovingUp(false);
+                    human.setMovingDown(false);
+                    human.setMovingLeft(false);
+                    human.setMovingRight(true);
+                }
+                if (joystickMovement == 3) {
+                    human.setMovingUp(false);
+                    human.setMovingDown(true);
+                    human.setMovingLeft(false);
+                    human.setMovingRight(false);
+                }
+                if (joystickMovement == 4) {
+                    human.setMovingUp(false);
+                    human.setMovingDown(false);
+                    human.setMovingLeft(true);
+                    human.setMovingRight(false);
+                }
+                /*if (event.x < 360) {
 
                    human.setMovingLeft(true);
                    human.setMovingRight(false);
@@ -102,13 +136,19 @@ public class GameScreen extends Screen {
 
                     human.setMovingRight(true);
                     human.setMovingLeft(false);
-                }
+                }*/
 
             }
 
             if (event.type == TouchEvent.TOUCH_UP) {
 
-                if (event.x < 640) {
+                    human.setMovingLeft(false);
+                    human.setMovingUp(false);
+                    human.setMovingRight(false);
+                    human.setMovingDown(false);
+                    joystickMovement = 0;
+
+               /* if (event.x < 640) {
                     // Stop moving left.
                     human.setMovingLeft(false);
                     human.setMovingRight(false);
@@ -117,7 +157,7 @@ public class GameScreen extends Screen {
                 else if (event.x > 640) {
                     human.setMovingRight(false);
                     human.setMovingLeft(false);
-                }
+                }*/
             }
 
 
@@ -168,7 +208,7 @@ public class GameScreen extends Screen {
         g.clearScreen(Color.BLACK);
         // First draw the game elements.
         g.drawImage(Assets.human,human.getCenterX(),human.getCenterY());
-        ((AndroidGraphics)g).drawScaledImage(Assets.joystick_background, 30, 950, 300, 300, 0,0, Assets.joystick_background.getWidth(),Assets.joystick_background.getHeight());
+        ((AndroidGraphics)g).drawScaledImage(joystick.getJoystickBackground(), joystick.getxCoor(), joystick.getyCoor(), 300, 300, 0,0, Assets.joystick_background.getWidth(),Assets.joystick_background.getHeight());
         // Example:
         //g.drawImage(Assets.background, 0, 0);
         //g.drawImage(Assets.character, characterX, characterY);
