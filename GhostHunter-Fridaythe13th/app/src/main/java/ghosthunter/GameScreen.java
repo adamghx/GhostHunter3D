@@ -32,17 +32,22 @@ public class GameScreen extends Screen {
 
 
     private static Human human;
+    private ArrayList<Ghost> ghosts;
     private Joystick joystick;
     private Rect joystickSpace;
+    private int counter;
     int joystickMovement = 0;
     int livesLeft = 1;
     Paint paint;
+
     public GameScreen(Game game) {
         super(game);
 
         human = new Human();
+        this.ghosts = new ArrayList<Ghost>();
         joystick = new Joystick();
         joystickSpace = joystick.getJoystickRect();
+        this.counter = 0;
         // Defining a paint object
         paint = new Paint();
         paint.setTextSize(30);
@@ -167,11 +172,20 @@ public class GameScreen extends Screen {
             state = GameState.GameOver;
         }
 
+        counter += 1;
+        if(counter % 100 == 0){
+            ghosts.add(new Ghost(human));
+        }
+
 
         // 3. Call individual update() methods here.
         // This is where all the game updates happen.
         // For example, robot.update();
         human.update();
+        for(Ghost ghost : ghosts){
+            ghost.update();
+        }
+
     }
 
     private void updatePaused(List<TouchEvent> touchEvents) {
@@ -203,6 +217,7 @@ public class GameScreen extends Screen {
     @Override
     public void paint(float deltaTime) {
         Graphics g = game.getGraphics();
+<<<<<<< HEAD
 
         ((AndroidGraphics)g).drawScaledImage(Assets.background, 0, 0, 800, 1280, 0, 0, Assets.background.getWidth(), Assets.background.getHeight());
 
@@ -210,8 +225,18 @@ public class GameScreen extends Screen {
         g.clearScreen(Color.BLACK);
 
         // First draw the game elements.
+=======
+        //Draw the background
+        ((AndroidGraphics)g).drawScaledImage(Assets.background, 0, 0, 800, 1280, 0, 0, Assets.background.getWidth(), Assets.background.getHeight());
+        // Then draw the game elements.
+>>>>>>> origin/master
         g.drawImage(Assets.human,human.getCenterX(),human.getCenterY());
+        for(Ghost ghost : ghosts){
+            g.drawImage(Assets.ghost,ghost.getCenterX(),ghost.getCenterY());
+        }
         ((AndroidGraphics)g).drawScaledImage(joystick.getJoystickBackground(), joystick.getxCoor(), joystick.getyCoor(), 300, 300, 0,0, Assets.joystick_background.getWidth(),Assets.joystick_background.getHeight());
+        ((AndroidGraphics)g).drawScaledImage(Assets.joystick_ball, 550,1000,200,200,0,0,Assets.joystick_ball.getWidth(),Assets.joystick_ball.getHeight());
+
         // Example:
         //g.drawImage(Assets.background, 0, 0);
         //g.drawImage(Assets.character, characterX, characterY);
