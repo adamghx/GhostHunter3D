@@ -34,15 +34,18 @@ public class GameScreen extends Screen {
 
     private Image bg1;
     private static Human human;
+    private ArrayList<Ghost> ghosts;
     private Joystick joystick;
     private Rect joystickSpace;
     int joystickMovement = 0;
     int livesLeft = 1;
     Paint paint;
+
     public GameScreen(Game game) {
         super(game);
 
         human = new Human();
+        this.ghosts = new ArrayList<Ghost>();
         joystick = new Joystick();
         joystickSpace = joystick.getJoystickRect();
         // Defining a paint object
@@ -168,12 +171,17 @@ public class GameScreen extends Screen {
         if (livesLeft == 0) {
             state = GameState.GameOver;
         }
+        if
 
 
         // 3. Call individual update() methods here.
         // This is where all the game updates happen.
         // For example, robot.update();
         human.update();
+        for(ghost : ghosts){
+            ghost.update();
+        }
+
     }
 
     private void updatePaused(List<TouchEvent> touchEvents) {
