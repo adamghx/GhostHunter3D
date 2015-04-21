@@ -23,6 +23,7 @@ public class LoadingScreen extends Screen {
         Assets.joystick_background = g.newImage("joystick_background.png", ImageFormat.RGB565);
         Assets.joystick_ball = g.newImage("joystick_ball.png", ImageFormat.RGB565);
         game.setScreen(new MainMenuScreen(game));
+        Assets.ghost = g.newImage("ghost_box.png", ImageFormat.RGB565);
     }
 
 
