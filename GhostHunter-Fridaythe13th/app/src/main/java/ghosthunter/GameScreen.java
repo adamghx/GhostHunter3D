@@ -31,8 +31,6 @@ public class GameScreen extends Screen {
     // You would create game objects here.
 
 
-
-    private Image bg1;
     private static Human human;
     private Joystick joystick;
     private Rect joystickSpace;
@@ -205,7 +203,12 @@ public class GameScreen extends Screen {
     @Override
     public void paint(float deltaTime) {
         Graphics g = game.getGraphics();
+
         ((AndroidGraphics)g).drawScaledImage(Assets.background, 0, 0, 800, 1280, 0, 0, Assets.background.getWidth(), Assets.background.getHeight());
+
+        //g.drawImage(Assets.background, 0, 0, 2000, 1000, this);
+        g.clearScreen(Color.BLACK);
+
         // First draw the game elements.
         g.drawImage(Assets.human,human.getCenterX(),human.getCenterY());
         ((AndroidGraphics)g).drawScaledImage(joystick.getJoystickBackground(), joystick.getxCoor(), joystick.getyCoor(), 300, 300, 0,0, Assets.joystick_background.getWidth(),Assets.joystick_background.getHeight());

@@ -6,6 +6,7 @@ import framework.Game;
 import framework.Graphics;
 import framework.Screen;
 import framework.Input.TouchEvent;
+import framework_implementation.AndroidGraphics;
 
 
 public class MainMenuScreen extends Screen {
@@ -50,7 +51,7 @@ public class MainMenuScreen extends Screen {
     @Override
     public void paint(float deltaTime) {
         Graphics g = game.getGraphics();
-        g.drawImage(Assets.menu, 0, 0);
+        ((AndroidGraphics)g).drawScaledImage(Assets.menu, 0, 0, 800, 1280, 0, 0, Assets.menu.getWidth(), Assets.menu.getHeight());
 
     }
 
