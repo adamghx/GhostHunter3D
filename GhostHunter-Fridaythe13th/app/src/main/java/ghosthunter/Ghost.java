@@ -18,8 +18,8 @@ public class Ghost {
 //    private boolean isMovingDown=false;
 
     public Ghost(Human human) {
-        this.centerX = 500;
-        this.centerY = 500;
+        this.centerX = 1000;
+        this.centerY = 1000;
         this.human = human;
         this.ghost = Assets.ghost;
         this.ghostBox = new Rect(centerX, centerY,centerX + ghost.getWidth(), centerY + ghost.getHeight());
