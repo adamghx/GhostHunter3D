@@ -173,17 +173,17 @@ public class GameScreen extends Screen {
             }
             ghost.update();
         }
-        for(Projectile p: human.getProjectiles()) {
+        for(int p = 0; p < human.getProjectiles().size(); p++) {
             boolean remove = false;
-            p.update();
-            for(Ghost ghost : ghosts){
-                if (ghost.getGhostBox().intersect(p.getProjectileBox())) {
-                    ghosts.remove(ghost);
+            human.getProjectiles().get(p).update();
+            for(int ghostnum = 0; ghostnum < ghosts.size(); ghostnum++){
+                if (ghosts.get(ghostnum).getGhostBox().intersect(human.getProjectiles().get(p).getProjectileBox())) {
+                    ghosts.remove(ghosts.get(ghostnum));
                     remove = true;
                 }
             }
             if(remove) {
-                human.getProjectiles().remove(p);
+                human.getProjectiles().remove(human.getProjectiles().get(p));
             }
         }
 
