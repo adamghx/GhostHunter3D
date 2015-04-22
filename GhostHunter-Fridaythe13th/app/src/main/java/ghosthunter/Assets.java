@@ -18,6 +18,7 @@ public class Assets {
     public static Image joystick_background;
     public static Image joystick_ball;
     public static Image ghost;
+    public static Image projectile;
 
 
     public static void load(GhostGame sampleGame) {

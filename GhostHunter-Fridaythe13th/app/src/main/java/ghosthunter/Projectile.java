@@ -11,35 +11,37 @@ public class Projectile {
     private int centerX, centerY, speed;
     private Rect projectileBox;
     private Image projectile;
-    private Human human;
-//    private boolean isMovingLeft=false;
-//    private boolean isMovingRight=false;
-//    private boolean isMovingUp=false;
-//    private boolean isMovingDown=false;
+    private boolean isMovingLeft=false;
+    private boolean isMovingRight=false;
+    private boolean isMovingUp=false;
+    private boolean isMovingDown=false;
 
-    public Projectile(Human human) {
-        this.centerX = 1000;
-        this.centerY = 1000;
-        this.human = human;
+    public Projectile(boolean l, boolean r, boolean u, boolean d, int x, int y) {
+        this.centerX = x;
+        this.centerY = y;
         this.projectile = Assets.projectile;
-        this.ghostBox = new Rect(centerX, centerY,centerX + ghost.getWidth(), centerY + ghost.getHeight());
-        speed = 2;
+        this.isMovingLeft = l;
+        this.isMovingRight = r;
+        this.isMovingUp = u;
+        this.isMovingDown = d;
+        this.projectileBox = new Rect(centerX, centerY,centerX + projectile.getWidth(), centerY + projectile.getHeight());
+        speed = 20;
     }
 
     //Called in the GameScreen
     public void update(){
-        ghostBox.set(this.centerX, this.centerY, centerX+ghost.getWidth(), centerY+ghost.getHeight());
-        if(human.getCenterX() > this.getCenterX()) {
-            centerX+=speed;
-        }
-        if(human.getCenterX() < this.getCenterX()) {
+        projectileBox.set(this.centerX, this.centerY, centerX+projectile.getWidth(), centerY+projectile.getHeight());
+        if(this.isMovingLeft) {
             centerX-=speed;
         }
-        if(human.getCenterY() > this.getCenterY()) {
-            centerY+=speed;
+        if(this.isMovingRight) {
+            centerX+=speed;
         }
-        if(human.getCenterY() < this.getCenterY()) {
+        if(this.isMovingUp) {
             centerY-=speed;
+        }
+        if(this.isMovingDown) {
+            centerY+=speed;
         }
 
     }
@@ -58,7 +60,7 @@ public class Projectile {
     }
 
     public Image getProjectile(){
-        return this.ghost;
+        return this.projectile;
     }
 
     //These are the mutators
@@ -71,7 +73,7 @@ public class Projectile {
     }
 
     public void setProjectileBox(Rect rect){
-        this.ghostBox = rect;
+        this.projectileBox = rect;
     }
 
 
