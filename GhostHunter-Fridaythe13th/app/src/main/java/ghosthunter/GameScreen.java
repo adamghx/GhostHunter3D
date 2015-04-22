@@ -163,6 +163,8 @@ public class GameScreen extends Screen {
         human.update();
         for(Ghost ghost : ghosts){
             if(ghost.getGhostBox().intersect(human.getHumanBox())){
+                ghost.setCenterX(ghost.getCenterX()+human.getCenterX()/10);
+                ghost.setCenterY(ghost.getCenterY()+human.getCenterY()/10);
                 livesLeft -= 1;
                 Log.d("livesLeft", "-1");
             }
