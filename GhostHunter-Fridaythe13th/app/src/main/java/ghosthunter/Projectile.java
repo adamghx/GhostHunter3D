@@ -17,11 +17,11 @@ public class Projectile {
     private boolean isMovingUp=false;
     private boolean isMovingDown=false;
 
-    public Projectile(int savedState, int x, int y) {
+    public Projectile(int saved, int x, int y) {
         this.centerX = x;
         this.centerY = y;
         this.projectile = Assets.projectile;
-        this.savedState = savedState;
+        this.savedState = saved;
         this.projectileBox = new Rect(centerX, centerY,centerX + projectile.getWidth(), centerY + projectile.getHeight());
         speed = 20;
     }
