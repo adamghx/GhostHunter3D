@@ -33,8 +33,10 @@ public class GameScreen extends Screen {
 
     private static Human human;
     private ArrayList<Ghost> ghosts;
+    private ArrayList<Projectile> projectiles;
     private Joystick joystick;
     private Rect joystickSpace;
+    private Rect buttonSpace;
     private int counter;
     int joystickMovement = 0;
     int livesLeft = 1;
@@ -47,6 +49,7 @@ public class GameScreen extends Screen {
         this.ghosts = new ArrayList<Ghost>();
         joystick = new Joystick();
         joystickSpace = joystick.getJoystickRect();
+        buttonSpace = new Rect(550, 1000, 750, 1200);
         this.counter = 0;
         // Defining a paint object
         paint = new Paint();
@@ -103,43 +106,33 @@ public class GameScreen extends Screen {
                 if (joystickSpace.contains(event.x, event.y)) {
                     Log.d("contains", "contains");
                    joystickMovement = joystick.determineMovement(event.x, event.y);
-                }
-                if (joystickMovement == 1) {
-                    human.setMovingUp(true);
-                    human.setMovingDown(false);
-                    human.setMovingLeft(false);
-                    human.setMovingRight(false);
-                }
-                if (joystickMovement == 2) {
-                    human.setMovingUp(false);
-                    human.setMovingDown(false);
-                    human.setMovingLeft(false);
-                    human.setMovingRight(true);
-                }
-                if (joystickMovement == 3) {
-                    human.setMovingUp(false);
-                    human.setMovingDown(true);
-                    human.setMovingLeft(false);
-                    human.setMovingRight(false);
-                }
-                if (joystickMovement == 4) {
-                    human.setMovingUp(false);
-                    human.setMovingDown(false);
-                    human.setMovingLeft(true);
-                    human.setMovingRight(false);
-                }
-                /*if (event.x < 360) {
-
-                   human.setMovingLeft(true);
-                   human.setMovingRight(false);
-
+                    if (joystickMovement == 1) {
+                        human.setMovingUp(true);
+                        human.setMovingDown(false);
+                        human.setMovingLeft(false);
+                        human.setMovingRight(false);
+                    }
+                    else if (joystickMovement == 2) {
+                        human.setMovingUp(false);
+                        human.setMovingDown(false);
+                        human.setMovingLeft(false);
+                        human.setMovingRight(true);
+                    }
+                    else if (joystickMovement == 3) {
+                        human.setMovingUp(false);
+                        human.setMovingDown(true);
+                        human.setMovingLeft(false);
+                        human.setMovingRight(false);
+                    }
+                    else if (joystickMovement == 4) {
+                        human.setMovingUp(false);
+                        human.setMovingDown(false);
+                        human.setMovingLeft(true);
+                        human.setMovingRight(false);
+                    }
                 }
 
-                else if (event.x > 360) {
 
-                    human.setMovingRight(true);
-                    human.setMovingLeft(false);
-                }*/
 
             }
 
@@ -219,11 +212,6 @@ public class GameScreen extends Screen {
     @Override
     public void paint(float deltaTime) {
         Graphics g = game.getGraphics();
-
-        ((AndroidGraphics)g).drawScaledImage(Assets.background, 0, 0, 800, 1280, 0, 0, Assets.background.getWidth(), Assets.background.getHeight());
-
-        //g.drawImage(Assets.background, 0, 0, 2000, 1000, this);
-        //g.clearScreen(Color.BLACK);
 
         // First draw the game elements.
         //Draw the background
