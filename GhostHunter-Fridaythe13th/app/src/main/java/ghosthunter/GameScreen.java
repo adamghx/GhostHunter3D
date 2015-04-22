@@ -14,12 +14,11 @@ import android.util.Log;
 
 import framework.Game;
 import framework.Graphics;
-import framework.Image;
 import framework.Screen;
 import framework.Input.TouchEvent;
 import framework_implementation.AndroidGraphics;
 
-//Android Screen Dimensions: 960dp X 720dp
+//Android Screen Dimensions: 800dp X 1280dp
 public class GameScreen extends Screen {
     enum GameState {
         Ready, Running, Paused, GameOver
@@ -33,7 +32,6 @@ public class GameScreen extends Screen {
 
     private static Human human;
     private ArrayList<Ghost> ghosts;
-    private ArrayList<Projectile> projectiles;
     private Joystick joystick;
     private Rect joystickSpace;
     private Rect buttonSpace;
@@ -131,6 +129,9 @@ public class GameScreen extends Screen {
                         human.setMovingRight(false);
                     }
                 }
+                if (buttonSpace.contains(event.x, event.y)) {
+                    human.fire();
+                }
 
 
 
@@ -219,7 +220,10 @@ public class GameScreen extends Screen {
         // Then draw the game elements.
         g.drawImage(Assets.human,human.getCenterX(),human.getCenterY());
         for(Ghost ghost : ghosts){
-            g.drawImage(Assets.ghost,ghost.getCenterX(),ghost.getCenterY());
+            g.drawImage(Assets.ghost, ghost.getCenterX(), ghost.getCenterY());
+        }
+        for(Projectile p : human.getProjectiles()){
+            g.drawImage(Assets.projectile, p.getCenterX(),p.getCenterY());
         }
         ((AndroidGraphics)g).drawScaledImage(joystick.getJoystickBackground(), joystick.getxCoor(), joystick.getyCoor(), 300, 300, 0,0, Assets.joystick_background.getWidth(),Assets.joystick_background.getHeight());
         ((AndroidGraphics)g).drawScaledImage(Assets.joystick_ball, 550,1000,200,200,0,0,Assets.joystick_ball.getWidth(),Assets.joystick_ball.getHeight());

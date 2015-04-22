@@ -3,6 +3,8 @@ package ghosthunter;
 import android.graphics.Rect;
 import android.view.View;
 
+import java.util.ArrayList;
+
 import framework.Image;
 
 /**
@@ -18,12 +20,14 @@ public class Human {
     private boolean isMovingRight=false;
     private boolean isMovingUp=false;
     private boolean isMovingDown=false;
+    private ArrayList<Projectile> projectiles;
 
     public Human() {
         this.centerX = 250;
         this.centerY = 250;
         this.human = Assets.human;
         this.humanBox = new Rect(centerX, centerY,centerX + human.getWidth(), centerY + human.getHeight());
+        this.projectiles = new ArrayList<Projectile>();
         speed = 7;
     }
 
@@ -45,6 +49,10 @@ public class Human {
 
     }
 
+    public void fire() {
+        Projectile p = new Projectile(this.isMovingLeft, this.isMovingRight, this.isMovingUp, this.isMovingDown, this.centerX, this.centerY);
+    }
+
     //These are the accessors
     public int getCenterX(){
         return this.centerX;
@@ -60,6 +68,10 @@ public class Human {
 
     public Image getHuman(){
         return this.human;
+    }
+
+    public ArrayList<Projectile> getProjectiles() {
+        return this.projectiles;
     }
     //These are the mutators
     public void setCenterX(int x){

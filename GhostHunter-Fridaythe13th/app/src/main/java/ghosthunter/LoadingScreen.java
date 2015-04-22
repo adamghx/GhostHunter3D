@@ -25,6 +25,7 @@ public class LoadingScreen extends Screen {
         Assets.joystick_background = g.newImage("joystick_background.png", ImageFormat.RGB565);
         Assets.joystick_ball = g.newImage("joystick_ball.png", ImageFormat.RGB565);
         Assets.ghost = g.newImage("ghost_box.png", ImageFormat.RGB565);
+        Assets.projectile = g.newImage("projectile.png", ImageFormat.RGB565);
         try{
             Thread.sleep(4000);}
         catch(Exception e){
