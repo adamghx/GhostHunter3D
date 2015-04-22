@@ -41,15 +41,19 @@ public class Human {
         humanBox.set(this.centerX, this.centerY, centerX+human.getWidth(), centerY+human.getHeight());
         if(this.isMovingLeft==true) {
             centerX-=speed;
+            savedMovingState = STATE_LEFT;
         }
         if(this.isMovingRight==true) {
             centerX+=speed;
+            savedMovingState = STATE_RIGHT;
         }
         if(this.isMovingUp==true) {
             centerY-=speed;
+            savedMovingState = STATE_UP;
         }
         if(this.isMovingDown==true) {
             centerY+=speed;
+            savedMovingState = STATE_DOWN;
         }
 
     }
@@ -102,21 +106,17 @@ public class Human {
 
     public void setMovingLeft(boolean b) {
         isMovingLeft = b;
-        savedMovingState = STATE_LEFT;
     }
 
     public void setMovingRight(boolean b) {
         isMovingRight = b;
-        savedMovingState = STATE_RIGHT;
     }
 
     public void setMovingUp(boolean b) {
         isMovingUp = b;
-        savedMovingState = STATE_UP;
     }
 
     public void setMovingDown(boolean b) {
         isMovingDown = b;
-        savedMovingState = STATE_DOWN;
     }
 }

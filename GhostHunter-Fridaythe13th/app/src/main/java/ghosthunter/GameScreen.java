@@ -129,15 +129,7 @@ public class GameScreen extends Screen {
                         human.setMovingRight(false);
                     }
                 }
-                if (buttonSpace.contains(event.x, event.y)) {
-                    Log.d("projectile" , "fire");
-                    human.fire();
-                }
-
-
-
             }
-
             if (event.type == TouchEvent.TOUCH_UP) {
 
                     human.setMovingLeft(false);
@@ -145,19 +137,13 @@ public class GameScreen extends Screen {
                     human.setMovingRight(false);
                     human.setMovingDown(false);
                     joystickMovement = 0;
-
-               /* if (event.x < 640) {
-                    // Stop moving left.
-                    human.setMovingLeft(false);
-                    human.setMovingRight(false);
-                }
-
-                else if (event.x > 640) {
-                    human.setMovingRight(false);
-                    human.setMovingLeft(false);
-                }*/
             }
-
+            if (event.type == TouchEvent.TOUCH_DOWN) {
+                if (buttonSpace.contains(event.x, event.y)) {
+                    Log.d("projectile" , "fire");
+                    human.fire();
+                }
+            }
 
         }
 
@@ -227,7 +213,7 @@ public class GameScreen extends Screen {
             g.drawImage(Assets.ghost, ghost.getCenterX(), ghost.getCenterY());
         }
         for(Projectile p : human.getProjectiles()){
-            ((AndroidGraphics)g).drawScaledImage(Assets.projectile, p.getCenterX(),p.getCenterY(),10,10,0,0,Assets.projectile.getWidth(),Assets.projectile.getHeight());
+            ((AndroidGraphics)g).drawScaledImage(Assets.projectile, p.getCenterX(),p.getCenterY(),50,50,0,0,Assets.projectile.getWidth(),Assets.projectile.getHeight());
         }
         ((AndroidGraphics)g).drawScaledImage(joystick.getJoystickBackground(), joystick.getxCoor(), joystick.getyCoor(), 300, 300, 0,0, Assets.joystick_background.getWidth(),Assets.joystick_background.getHeight());
         ((AndroidGraphics)g).drawScaledImage(Assets.joystick_ball, 550,1000,200,200,0,0,Assets.joystick_ball.getWidth(),Assets.joystick_ball.getHeight());
