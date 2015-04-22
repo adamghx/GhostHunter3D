@@ -20,7 +20,12 @@ public class Human {
     private boolean isMovingRight=false;
     private boolean isMovingUp=false;
     private boolean isMovingDown=false;
+    private int savedMovingState;
     private ArrayList<Projectile> projectiles;
+    private static final int STATE_UP = 1;
+    private static final int STATE_RIGHT = 2;
+    private static final int STATE_DOWN = 3;
+    private static final int STATE_LEFT = 4;
 
     public Human() {
         this.centerX = 250;
@@ -50,7 +55,8 @@ public class Human {
     }
 
     public void fire() {
-        Projectile p = new Projectile(this.isMovingLeft, this.isMovingRight, this.isMovingUp, this.isMovingDown, this.centerX, this.centerY);
+        Projectile p = new Projectile(this.savedMovingState, this.centerX + (human.getWidth()/2), this.centerY + (human.getHeight()/2));
+        projectiles.add(p);
     }
 
     //These are the accessors
@@ -96,17 +102,21 @@ public class Human {
 
     public void setMovingLeft(boolean b) {
         isMovingLeft = b;
+        savedMovingState = STATE_LEFT;
     }
 
     public void setMovingRight(boolean b) {
         isMovingRight = b;
+        savedMovingState = STATE_RIGHT;
     }
 
     public void setMovingUp(boolean b) {
         isMovingUp = b;
+        savedMovingState = STATE_UP;
     }
 
     public void setMovingDown(boolean b) {
         isMovingDown = b;
+        savedMovingState = STATE_DOWN;
     }
 }

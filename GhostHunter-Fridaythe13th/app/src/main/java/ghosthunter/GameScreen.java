@@ -130,6 +130,7 @@ public class GameScreen extends Screen {
                     }
                 }
                 if (buttonSpace.contains(event.x, event.y)) {
+                    Log.d("projectile" , "fire");
                     human.fire();
                 }
 
@@ -181,6 +182,9 @@ public class GameScreen extends Screen {
         for(Ghost ghost : ghosts){
             ghost.update();
         }
+        for(Projectile p: human.getProjectiles()) {
+            p.update();
+        }
 
     }
 
@@ -223,7 +227,7 @@ public class GameScreen extends Screen {
             g.drawImage(Assets.ghost, ghost.getCenterX(), ghost.getCenterY());
         }
         for(Projectile p : human.getProjectiles()){
-            g.drawImage(Assets.projectile, p.getCenterX(),p.getCenterY());
+            ((AndroidGraphics)g).drawScaledImage(Assets.projectile, p.getCenterX(),p.getCenterY(),10,10,0,0,Assets.projectile.getWidth(),Assets.projectile.getHeight());
         }
         ((AndroidGraphics)g).drawScaledImage(joystick.getJoystickBackground(), joystick.getxCoor(), joystick.getyCoor(), 300, 300, 0,0, Assets.joystick_background.getWidth(),Assets.joystick_background.getHeight());
         ((AndroidGraphics)g).drawScaledImage(Assets.joystick_ball, 550,1000,200,200,0,0,Assets.joystick_ball.getWidth(),Assets.joystick_ball.getHeight());
