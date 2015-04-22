@@ -37,7 +37,7 @@ public class GameScreen extends Screen {
     private Rect buttonSpace;
     private int counter;
     int joystickMovement = 0;
-    int livesLeft = 1;
+    int livesLeft = 3;
     Paint paint;
 
     public GameScreen(Game game) {
@@ -149,10 +149,6 @@ public class GameScreen extends Screen {
 
         // 2. Check miscellaneous events like death:
 
-        if (livesLeft == 0) {
-            state = GameState.GameOver;
-        }
-
         counter += 1;
         if(counter % 150 == 0){
             if(ghosts.size() < 10) {
@@ -166,6 +162,13 @@ public class GameScreen extends Screen {
         // For example, robot.update();
         human.update();
         for(Ghost ghost : ghosts){
+            if(ghost.getGhostBox().intersect(human.getHumanBox())){
+                livesLeft -= 1;
+                Log.d("livesLeft", "-1");
+            }
+            if (livesLeft == 0) {
+                state = GameState.GameOver;
+            }
             ghost.update();
         }
         for(Projectile p: human.getProjectiles()) {
