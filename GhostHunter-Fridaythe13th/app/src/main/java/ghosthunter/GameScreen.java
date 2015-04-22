@@ -169,7 +169,17 @@ public class GameScreen extends Screen {
             ghost.update();
         }
         for(Projectile p: human.getProjectiles()) {
+            boolean remove = false;
             p.update();
+            for(Ghost ghost : ghosts){
+                if (ghost.getGhostBox().intersect(p.getProjectileBox())) {
+                    ghosts.remove(ghost);
+                    remove = true;
+                }
+            }
+            if(remove) {
+                human.getProjectiles().remove(p);
+            }
         }
 
     }
@@ -213,7 +223,7 @@ public class GameScreen extends Screen {
             g.drawImage(Assets.ghost, ghost.getCenterX(), ghost.getCenterY());
         }
         for(Projectile p : human.getProjectiles()){
-            ((AndroidGraphics)g).drawScaledImage(Assets.projectile, p.getCenterX(),p.getCenterY(),50,50,0,0,Assets.projectile.getWidth(),Assets.projectile.getHeight());
+            ((AndroidGraphics)g).drawScaledImage(Assets.projectile, p.getCenterX(), p.getCenterY(), 50, 50, 0, 0, Assets.projectile.getWidth(), Assets.projectile.getHeight());
         }
         ((AndroidGraphics)g).drawScaledImage(joystick.getJoystickBackground(), joystick.getxCoor(), joystick.getyCoor(), 300, 300, 0,0, Assets.joystick_background.getWidth(),Assets.joystick_background.getHeight());
         ((AndroidGraphics)g).drawScaledImage(Assets.joystick_ball, 550,1000,200,200,0,0,Assets.joystick_ball.getWidth(),Assets.joystick_ball.getHeight());
