@@ -156,11 +156,23 @@ public class GameScreen extends Screen {
         // 2. Check miscellaneous events like death:
 
         counter += 1;
-        if(counter % 600 == 0) {
+        if(counter % 900 == 0) {
             ghost_speed += 1;
         }
-        if(counter % 50 == 0 && mod_value > 50){
+        if(counter % 100 == 0 && mod_value > 30){
             mod_value = mod_value - 10;
+        }
+        if(counter >= 750){
+            if(counter % (mod_value+20) == 0 && mod_value >= 20){
+                int edge = (int) (Math.random() * 4);
+                ghosts.add(new Ghost(human, edge, ghost_speed));
+            }
+        }
+        if(counter >= 3000){
+            if(counter % (mod_value+35) == 0 && mod_value >= 20){
+                int edge = (int) (Math.random() * 4);
+                ghosts.add(new Ghost(human, edge, ghost_speed));
+            }
         }
         if(counter % mod_value == 0 && mod_value >= 20){
             int edge = (int) (Math.random() * 4);
