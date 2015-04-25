@@ -159,7 +159,7 @@ public class GameScreen extends Screen {
         if(counter % 900 == 0) {
             ghost_speed += 1;
         }
-        if(counter % 100 == 0 && mod_value > 30){
+        if(counter % 200 == 0 && mod_value > 30){
             mod_value = mod_value - 10;
         }
         if(counter >= 750){
