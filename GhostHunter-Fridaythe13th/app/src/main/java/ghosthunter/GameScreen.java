@@ -150,7 +150,7 @@ public class GameScreen extends Screen {
 
         // 2. Check miscellaneous events like death:
 
-        counter += 1;
+        counter += 50;
         if(counter % 150 == 0){
             if(ghosts.size() < 10) {
                 int edge = (int)(Math.random()*4);
