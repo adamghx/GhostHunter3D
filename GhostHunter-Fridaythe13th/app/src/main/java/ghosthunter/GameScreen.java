@@ -159,7 +159,7 @@ public class GameScreen extends Screen {
             ghosts.add(new Ghost(human, edge, ghost_speed));
             if(counter % 300 == 0) {
                 mod_value -= 15;
-                ghost_speed += 1;
+                ghost_speed += 50;
             }
 
         }
