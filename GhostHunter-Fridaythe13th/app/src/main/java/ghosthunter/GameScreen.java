@@ -243,7 +243,7 @@ public class GameScreen extends Screen {
             g.drawImage(Assets.projectile, p.getCenterX(), p.getCenterY());
         }
         g.drawImage(Assets.joystick_background, joystick.getxCoor(), joystick.getyCoor());
-        g.drawImage(Assets.joystick_ball,550,1000);
+        g.drawImage(Assets.fire_button,550,1000);
 
         // Example:
         //g.drawImage(Assets.background, 0, 0);

@@ -23,7 +23,7 @@ public class LoadingScreen extends Screen {
         Assets.human = g.newImage("character_box.png", ImageFormat.RGB565);
         Assets.background = g.newImage("game_background.png", ImageFormat.RGB565);
         Assets.joystick_background = g.newImage("joystick_background.png", ImageFormat.RGB565);
-        Assets.joystick_ball = g.newImage("joystick_ball.png", ImageFormat.RGB565);
+        Assets.fire_button = g.newImage("joystick_ball.png", ImageFormat.RGB565);
         Assets.ghost = g.newImage("ghost_box.png", ImageFormat.RGB565);
         Assets.projectile = g.newImage("projectile.png", ImageFormat.RGB565);
         resize();
@@ -57,7 +57,7 @@ public class LoadingScreen extends Screen {
         Assets.background.scaleImage(800,1280);
         Assets.projectile.scaleImage(50,50);
         Assets.joystick_background.scaleImage(300,300);
-        Assets.joystick_ball.scaleImage(200,200);
+        Assets.fire_button.scaleImage(200,200);
         Assets.ghost.scaleImage(100,200);
         Assets.human.scaleImage(100,200);
     }
