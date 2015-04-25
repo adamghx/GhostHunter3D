@@ -41,6 +41,7 @@ public class GameScreen extends Screen {
     int joystickMovement = 0;
     int livesLeft = 3;
     int mod_value = 200;
+    int ghost_speed = 2;
     Paint paint;
 
     public GameScreen(Game game) {
@@ -153,11 +154,12 @@ public class GameScreen extends Screen {
         // 2. Check miscellaneous events like death:
 
         counter += 1;
-        if(counter % mod_value == 0 && mod_value >= 50){
+        if(counter % mod_value == 0 && mod_value >= 20){
             int edge = (int)(Math.random()*4);
-            ghosts.add(new Ghost(human, edge));
+            ghosts.add(new Ghost(human, edge, ghost_speed));
             if(counter % 300 == 0) {
-                mod_value -= 5;
+                mod_value -= 15;
+                ghost_speed += 1;
             }
 
         }

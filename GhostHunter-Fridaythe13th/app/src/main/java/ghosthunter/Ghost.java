@@ -17,7 +17,7 @@ public class Ghost {
 //    private boolean isMovingUp=false;
 //    private boolean isMovingDown=false;
 
-    public Ghost(Human human, int edge) {
+    public Ghost(Human human, int edge, int ghost_speed) {
         // 800 X 1280
         //north edge
         if(edge == 0) {
@@ -42,7 +42,7 @@ public class Ghost {
         this.human = human;
         this.ghost = Assets.ghost;
         this.ghostBox = new Rect(centerX, centerY,centerX + ghost.getWidth(), centerY + ghost.getHeight());
-        speed = 3;
+        this.speed = ghost_speed;
     }
 
     //Called in the GameScreen
