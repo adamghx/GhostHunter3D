@@ -20,6 +20,7 @@ public class Assets {
     public static Image ghost;
     public static Image projectile;
     public static Image logo;
+    public static Image heart;
 
 
     public static void load(GhostGame sampleGame) {

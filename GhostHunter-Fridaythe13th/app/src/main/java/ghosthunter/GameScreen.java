@@ -293,11 +293,11 @@ public class GameScreen extends Screen {
 
     private void drawRunningUI() {
         Graphics g = game.getGraphics();
-        g.drawString("Score:" + counter, 700, 75, paint);
+        g.drawString("Score: " + counter, 700, 75, paint);
         Image heart = Assets.human;
         int xcoor = 40;
         for(int i = 0; i<livesLeft; i++) {
-            ((AndroidGraphics)g).drawScaledImage(heart, xcoor, 50, 40, 40, 0, 0, heart.getWidth(), heart.getHeight());
+            g.drawImage(Assets.heart, xcoor, 50);
             xcoor+= 60;
         }
 
