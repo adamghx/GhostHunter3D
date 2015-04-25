@@ -11,14 +11,15 @@ public class Assets {
 
     public static Image menu;
     public static Image human;
-    public static Sound click;
+    public static Image button;
     public static Music theme;
     public static Image background;
     public static Image splash;
     public static Image joystick_background;
-    public static Image joystick_ball;
+    public static Image fire_button;
     public static Image ghost;
     public static Image projectile;
+    public static Image logo;
 
 
     public static void load(GhostGame sampleGame) {
