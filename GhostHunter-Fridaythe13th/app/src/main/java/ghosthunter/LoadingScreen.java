@@ -20,11 +20,11 @@ public class LoadingScreen extends Screen {
         Graphics g = game.getGraphics();
         Assets.menu = g.newImage("main_menu.png", ImageFormat.RGB565);
 //        Assets.click = game.getAudio().createSound("explode.ogg");
-        Assets.human = g.newImage("character_box.png", ImageFormat.RGB565);
+        Assets.human = g.newImage("character_front.png", ImageFormat.RGB565);
         Assets.background = g.newImage("game_background.png", ImageFormat.RGB565);
         Assets.joystick_background = g.newImage("joystick_background.png", ImageFormat.RGB565);
-        Assets.fire_button = g.newImage("joystick_ball.png", ImageFormat.RGB565);
-        Assets.ghost = g.newImage("ghost_box.png", ImageFormat.RGB565);
+        Assets.fire_button = g.newImage("button.png", ImageFormat.RGB565);
+        Assets.ghost = g.newImage("ghost_front.png", ImageFormat.RGB565);
         Assets.projectile = g.newImage("projectile.png", ImageFormat.RGB565);
         resize();
 //        try{
