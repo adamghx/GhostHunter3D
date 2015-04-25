@@ -55,7 +55,6 @@ public class Human {
             centerY+=speed;
             savedMovingState = STATE_DOWN;
         }
-
     }
 
     public void fire() {

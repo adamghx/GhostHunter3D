@@ -36,6 +36,7 @@ public class GameScreen extends Screen {
     private Joystick joystick;
     private Rect joystickSpace;
     private Rect buttonSpace;
+    private Rect screenSpace;
     private int counter;
     int joystickMovement = 0;
     int livesLeft = 3;
@@ -44,7 +45,7 @@ public class GameScreen extends Screen {
 
     public GameScreen(Game game) {
         super(game);
-
+        screenSpace = new Rect(0,0,800,1280);
         human = new Human();
         this.ghosts = new ArrayList<Ghost>();
         joystick = new Joystick();
@@ -182,14 +183,14 @@ public class GameScreen extends Screen {
             if(ghost.getGhostBox().intersect(human.getHumanBox())){
 
                 if(human.getHumanBox().centerX() > ghost.getGhostBox().centerX()){
-                    ghost.setCenterX(ghost.getCenterX() - 20);
+                    ghost.setCenterX(ghost.getCenterX() - 75);
                 } else {
-                    ghost.setCenterX(ghost.getCenterX() + 20);
+                    ghost.setCenterX(ghost.getCenterX() + 75);
                 }
                 if(human.getHumanBox().centerY() > ghost.getGhostBox().centerY()){
-                    ghost.setCenterY(ghost.getCenterY() - 20);
+                    ghost.setCenterY(ghost.getCenterY() - 75);
                 } else {
-                    ghost.setCenterY(ghost.getCenterY() + 20);
+                    ghost.setCenterY(ghost.getCenterY() + 75);
                 }
 
                 livesLeft -= 1;
@@ -203,12 +204,17 @@ public class GameScreen extends Screen {
         for(int p = 0; p < human.getProjectiles().size(); p++) {
             boolean remove = false;
             human.getProjectiles().get(p).update();
+
             for(int ghostnum = 0; ghostnum < ghosts.size(); ghostnum++){
                 if (ghosts.get(ghostnum).getGhostBox().intersect(human.getProjectiles().get(p).getProjectileBox())) {
                     ghosts.remove(ghosts.get(ghostnum));
                     remove = true;
                 }
             }
+            if (!human.getProjectiles().get(p).getProjectileBox().intersect(screenSpace)) {
+                remove = true;
+            }
+
             if(remove) {
                 human.getProjectiles().remove(human.getProjectiles().get(p));
             }
