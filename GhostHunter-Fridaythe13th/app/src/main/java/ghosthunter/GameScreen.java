@@ -230,12 +230,12 @@ public class GameScreen extends Screen {
         for (int i = 0; i < len; i++) {
             TouchEvent event = touchEvents.get(i);
             if (event.type == TouchEvent.TOUCH_DOWN) {
-//                if (event.x > 300 && event.x < 980 && event.y > 100
-//                        && event.y < 500) {
+                if (event.x > 200 && event.x < 600 && event.y > 800
+                        && event.y < 1000) {
                     nullify();
                     game.setScreen(new MainMenuScreen(game));
                     return;
-//                }
+                }
             }
         }
 
@@ -326,7 +326,7 @@ public class GameScreen extends Screen {
         g.drawRect(0, 0, 810, 1300, Color.BLACK);
         g.drawString("GAME OVER.", 400, 300, paint);
         g.drawString("Your Score Is: "+counter, 400, 350, paint);
-        g.drawString("To Return to Menu, Tap Anywhere", 400, 600, paint);
+        g.drawString("To Return to Menu, Tap Below", 400, 600, paint);
     }
 
     @Override
