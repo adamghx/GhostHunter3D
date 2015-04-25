@@ -153,7 +153,8 @@ public class GameScreen extends Screen {
         counter += 1;
         if(counter % 150 == 0){
             if(ghosts.size() < 10) {
-                ghosts.add(new Ghost(human));
+                int edge = (int)(Math.random()*4);
+                ghosts.add(new Ghost(human, edge));
             }
         }
 

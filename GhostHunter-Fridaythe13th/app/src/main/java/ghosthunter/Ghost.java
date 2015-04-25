@@ -17,13 +17,32 @@ public class Ghost {
 //    private boolean isMovingUp=false;
 //    private boolean isMovingDown=false;
 
-    public Ghost(Human human) {
-        this.centerX = 1000;
-        this.centerY = 1000;
+    public Ghost(Human human, int edge) {
+        // 800 X 1280
+        //north edge
+        if(edge == 0) {
+            this.centerX = (int)(Math.random()*800);
+            this.centerY = -50;
+        }
+        //east edge
+        if(edge == 1) {
+            this.centerX = 850;
+            this.centerY = (int)(Math.random()*1250);
+        }
+        //south edge
+        if(edge == 2) {
+            this.centerX = (int)(Math.random()*800);
+            this.centerY = 1330;
+        }
+        //west edge
+        if(edge == 3) {
+            this.centerX = -50;
+            this.centerY = (int)(Math.random()*1250);
+        }
         this.human = human;
         this.ghost = Assets.ghost;
         this.ghostBox = new Rect(centerX, centerY,centerX + ghost.getWidth(), centerY + ghost.getHeight());
-        speed = 2;
+        speed = 15;
     }
 
     //Called in the GameScreen
