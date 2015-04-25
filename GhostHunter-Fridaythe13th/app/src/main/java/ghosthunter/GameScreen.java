@@ -309,6 +309,8 @@ public class GameScreen extends Screen {
         g.drawARGB(155, 0, 0, 0);
         g.drawString("Tap to begin.",
                 400, 300, paint);
+        g.drawString("Use this to move.", 370, 950, paint);
+        g.drawString("These are your lives.", 140, 110, paint);
 
     }
 
