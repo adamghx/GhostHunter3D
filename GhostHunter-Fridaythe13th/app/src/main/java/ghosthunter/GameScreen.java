@@ -40,8 +40,8 @@ public class GameScreen extends Screen {
     private int counter;
     int joystickMovement = 0;
     int livesLeft = 3;
-    int mod_value = 200;
-    int ghost_speed = 2;
+    int mod_value;
+    int ghost_speed;
     Paint paint;
 
     public GameScreen(Game game) {
@@ -53,6 +53,8 @@ public class GameScreen extends Screen {
         joystickSpace = joystick.getJoystickRect();
         buttonSpace = new Rect(550, 1000, 750, 1200);
         this.counter = 0;
+        this.ghost_speed = 2;
+        this.mod_value = 200;
         // Defining a paint object
         paint = new Paint();
         paint.setTextSize(30);
@@ -154,26 +156,16 @@ public class GameScreen extends Screen {
         // 2. Check miscellaneous events like death:
 
         counter += 1;
-        if(counter % 300 == 0) {
-            mod_value -= 15;
+        if(counter % 600 == 0) {
             ghost_speed += 1;
+        }
+        if(counter % 50 == 0 && mod_value > 50){
+            mod_value = mod_value - 10;
         }
         if(counter % mod_value == 0 && mod_value >= 20){
             int edge = (int) (Math.random() * 4);
             ghosts.add(new Ghost(human, edge, ghost_speed));
         }
-//        if(counter >= 1000){
-//            if(counter % 100 == 0){
-//                int edge = (int)(Math.random()*4);
-//                ghosts.add(new Ghost(human, edge));
-//            }
-//        }
-//        if(counter >= 3000){
-//            if(counter % 46 == 0){
-//                int edge = (int)(Math.random()*4);
-//                ghosts.add(new Ghost(human, edge));
-//            }
-//        }
 
 
         // 3. Call individual update() methods here.
