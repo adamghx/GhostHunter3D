@@ -17,6 +17,10 @@ public class AndroidImage implements Image {
         this.format = format;
     }
 
+    public void scaleImage(int width, int height) {
+        bitmap = bitmap.createScaledBitmap(bitmap, width, height, true);
+    }
+
     @Override
     public int getWidth() {
         return bitmap.getWidth();

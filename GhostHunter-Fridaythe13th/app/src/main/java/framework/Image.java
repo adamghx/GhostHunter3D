@@ -10,4 +10,5 @@ public interface Image {
     public int getHeight();
     public ImageFormat getFormat();
     public void dispose();
+    public void scaleImage(int a, int b);
 }

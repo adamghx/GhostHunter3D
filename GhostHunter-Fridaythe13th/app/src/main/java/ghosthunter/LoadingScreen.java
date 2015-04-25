@@ -26,6 +26,7 @@ public class LoadingScreen extends Screen {
         Assets.joystick_ball = g.newImage("joystick_ball.png", ImageFormat.RGB565);
         Assets.ghost = g.newImage("ghost_box.png", ImageFormat.RGB565);
         Assets.projectile = g.newImage("projectile.png", ImageFormat.RGB565);
+        resize();
 //        try{
 //            Thread.sleep(4000);}
 //        catch(Exception e){
@@ -51,6 +52,15 @@ public class LoadingScreen extends Screen {
 
     }
 
+    //resizes the original image
+    public void resize() {
+        Assets.background.scaleImage(800,1280);
+        Assets.projectile.scaleImage(50,50);
+        Assets.joystick_background.scaleImage(300,300);
+        Assets.joystick_ball.scaleImage(200,200);
+        Assets.ghost.scaleImage(100,200);
+        Assets.human.scaleImage(100,200);
+    }
 
     @Override
     public void resume() {
