@@ -188,14 +188,14 @@ public class GameScreen extends Screen {
             if(ghost.getGhostBox().intersect(human.getHumanBox())){
 
                 if(human.getHumanBox().centerX() > ghost.getGhostBox().centerX()){
-                    ghost.setCenterX(ghost.getCenterX() - 75);
+                    ghost.setCenterX(ghost.getCenterX() - 150);
                 } else {
-                    ghost.setCenterX(ghost.getCenterX() + 75);
+                    ghost.setCenterX(ghost.getCenterX() + 150);
                 }
                 if(human.getHumanBox().centerY() > ghost.getGhostBox().centerY()){
-                    ghost.setCenterY(ghost.getCenterY() - 75);
+                    ghost.setCenterY(ghost.getCenterY() - 150);
                 } else {
-                    ghost.setCenterY(ghost.getCenterY() + 75);
+                    ghost.setCenterY(ghost.getCenterY() + 150);
                 }
 
                 livesLeft -= 1;
