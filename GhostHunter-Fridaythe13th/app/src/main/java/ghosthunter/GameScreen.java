@@ -270,7 +270,7 @@ public class GameScreen extends Screen {
         }
         g.drawImage(Assets.joystick_background, joystick.getxCoor(), joystick.getyCoor());
         g.drawImage(Assets.fire_button,550,1000);
-        g.drawString("Score: " + counter, 700, 75, paint);
+        g.drawString("Score: " + counter, 690, 75, paint);
         int xcoor = 40;
         for(int i = 0; i<livesLeft; i++) {
             g.drawImage(Assets.heart, xcoor, 50);
@@ -316,7 +316,7 @@ public class GameScreen extends Screen {
 
     private void drawRunningUI() {
         Graphics g = game.getGraphics();
-        g.drawString("Score: " + counter, 700, 75, paint);
+        g.drawString("Score: " + counter, 690, 75, paint);
         Image heart = Assets.human;
         int xcoor = 40;
         for(int i = 0; i<livesLeft; i++) {

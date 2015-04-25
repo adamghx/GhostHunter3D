@@ -20,7 +20,7 @@ public class Human {
     private boolean isMovingRight=false;
     private boolean isMovingUp=false;
     private boolean isMovingDown=false;
-    private int savedMovingState;
+    private int savedMovingState = 1;
     private ArrayList<Projectile> projectiles;
     private static final int STATE_UP = 1;
     private static final int STATE_RIGHT = 2;
