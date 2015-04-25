@@ -57,12 +57,13 @@ public class LoadingScreen extends Screen {
     @Override
     public void paint(float deltaTime) {
         Graphics g = game.getGraphics();
-        ((AndroidGraphics)g).drawScaledImage(Assets.splash, 0, 0, 800, 1280, 0, 0, Assets.splash.getWidth(), Assets.splash.getHeight());
+//        ((AndroidGraphics)g).drawScaledImage(Assets.splash, 0, 0, 800, 1280, 0, 0, Assets.splash.getWidth(), Assets.splash.getHeight());
+        g.drawRect(0, 0, 800, 1280, Color.BLACK);
         g.drawString("Maurice Wong", 200, 500, paint);
         g.drawString("Emily Zhou", 200, 550, paint);
         g.drawString("Christian Lastova", 200, 600, paint);
         g.drawString("Adam Guo", 200, 650, paint);
-        g.drawString("University of Virginia, CS2110, Spring", 400, 750, paint);
+        g.drawString("University of Virginia, CS2110, Spring 2015", 400, 750, paint);
         g.drawImage(Assets.logo, 200, 800);
         g.drawString("Thanks to Kilobolt.com!", 300, 1050, paint);
     }
