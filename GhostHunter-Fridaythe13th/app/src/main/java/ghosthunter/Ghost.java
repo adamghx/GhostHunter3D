@@ -42,7 +42,7 @@ public class Ghost {
         this.human = human;
         this.ghost = Assets.ghost;
         this.ghostBox = new Rect(centerX, centerY,centerX + ghost.getWidth(), centerY + ghost.getHeight());
-        speed = 15;
+        speed = 3;
     }
 
     //Called in the GameScreen
