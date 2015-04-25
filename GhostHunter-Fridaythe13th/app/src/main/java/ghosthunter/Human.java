@@ -39,19 +39,19 @@ public class Human {
     //Called in the GameScreen
     public void update(){
         humanBox.set(this.centerX, this.centerY, centerX+human.getWidth(), centerY+human.getHeight());
-        if(this.isMovingLeft==true) {
+        if(this.isMovingLeft==true && this.centerX > 0) {
             centerX-=speed;
             savedMovingState = STATE_LEFT;
         }
-        if(this.isMovingRight==true) {
+        if(this.isMovingRight==true && this.centerX < (800-human.getWidth())) {
             centerX+=speed;
             savedMovingState = STATE_RIGHT;
         }
-        if(this.isMovingUp==true) {
+        if(this.isMovingUp==true && this.centerY > 0) {
             centerY-=speed;
             savedMovingState = STATE_UP;
         }
-        if(this.isMovingDown==true) {
+        if(this.isMovingDown==true && this.centerY < 1280-human.getHeight()) {
             centerY+=speed;
             savedMovingState = STATE_DOWN;
         }
