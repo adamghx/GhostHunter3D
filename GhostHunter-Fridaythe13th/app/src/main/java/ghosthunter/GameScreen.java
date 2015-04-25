@@ -154,7 +154,6 @@ public class GameScreen extends Screen {
         // 2. Check miscellaneous events like death:
 
         counter += 1;
-        ghost_speed = 2;
         if(counter % 300 == 0) {
             mod_value -= 15;
             ghost_speed += 1;
