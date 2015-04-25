@@ -53,7 +53,7 @@ public class GameScreen extends Screen {
         joystickSpace = joystick.getJoystickRect();
         buttonSpace = new Rect(550, 1000, 750, 1200);
         this.counter = 0;
-        this.ghost_speed = 2;
+        this.ghost_speed = 3;
         this.mod_value = 200;
         // Defining a paint object
         paint = new Paint();
@@ -156,7 +156,7 @@ public class GameScreen extends Screen {
         // 2. Check miscellaneous events like death:
 
         counter += 1;
-        if(counter % 900 == 0) {
+        if(counter % 1150 == 0) {
             ghost_speed += 1;
         }
         if(counter % 200 == 0 && mod_value > 30){
