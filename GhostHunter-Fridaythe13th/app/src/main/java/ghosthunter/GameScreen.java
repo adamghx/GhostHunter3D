@@ -154,14 +154,16 @@ public class GameScreen extends Screen {
         // 2. Check miscellaneous events like death:
 
         counter += 1;
+        ghost_speed = 50;
+        if(counter % 300 == 0) {
+            mod_value -= 15;
+//            ghost_speed += 50;
+        }
         if(counter % mod_value == 0 && mod_value >= 20){
-            int edge = (int)(Math.random()*4);
-            ghosts.add(new Ghost(human, edge, ghost_speed));
-            if(counter % 300 == 0) {
-                mod_value -= 15;
-                ghost_speed += 50;
+            for(int j = 0; j < 20; j++) {
+                int edge = (int) (Math.random() * 4);
+                ghosts.add(new Ghost(human, edge, ghost_speed));
             }
-
         }
 //        if(counter >= 1000){
 //            if(counter % 100 == 0){
