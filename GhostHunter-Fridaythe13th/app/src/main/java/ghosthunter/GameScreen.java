@@ -6,6 +6,7 @@ package ghosthunter;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.lang.Math;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -46,6 +47,7 @@ public class GameScreen extends Screen {
     int mod_value;
     int ghost_speed;
     Paint paint;
+    private boolean proximity;
 
     public GameScreen(Game game) {
         super(game);
@@ -58,6 +60,7 @@ public class GameScreen extends Screen {
         this.counter = 0;
         this.ghost_speed = 2;
         this.mod_value = 200;
+        proximity = false;
         // Defining a paint object
         paint = new Paint();
         paint.setTextSize(30);
@@ -207,6 +210,18 @@ public class GameScreen extends Screen {
             if (livesLeft == 0) {
                 state = GameState.GameOver;
             }
+            // This is where user get alerted when ghosts get close to the human
+            double xDirectionDistance = human.getHumanBox().centerX() - ghost.getGhostBox().centerX();
+            double yDirectionDistance = human.getHumanBox().centerY() - ghost.getGhostBox().centerY();
+            double humanGhostDistance = Math.hypot(xDirectionDistance,yDirectionDistance);
+            if (humanGhostDistance < 420) {
+                Log.d("PROXIMITY","PROXIMITY");
+                proximity = true;
+            }
+            else {
+                proximity = false;
+            }
+
             ghost.update();
         }
         for(int p = 0; p < human.getProjectiles().size(); p++) {
@@ -325,6 +340,9 @@ public class GameScreen extends Screen {
         for(int i = 0; i<livesLeft; i++) {
             g.drawImage(Assets.heart, xcoor, 50);
             xcoor+= 60;
+        }
+        if (proximity == true) {
+            g.drawString("Ghost Approaching!", 200, 200, paint);
         }
 
     }

@@ -48,7 +48,6 @@ public class LoadingScreen extends Screen {
 
          }
 
-
         game.setScreen(new MainMenuScreen(game));
 
     }
