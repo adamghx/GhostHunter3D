@@ -47,7 +47,12 @@ public class GameScreen extends Screen {
     int mod_value;
     int ghost_speed;
     Paint paint;
+<<<<<<< HEAD
     private boolean proximity;
+=======
+    SharedPreferences prefs;
+    int score;
+>>>>>>> origin/master
 
     public GameScreen(Game game) {
         super(game);
@@ -60,7 +65,15 @@ public class GameScreen extends Screen {
         this.counter = 0;
         this.ghost_speed = 2;
         this.mod_value = 200;
+<<<<<<< HEAD
         proximity = false;
+=======
+
+        //getting the high score
+        prefs = ((AndroidGame)super.game).getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
+        score = prefs.getInt("key", 0); //0 is the default value if nothing is found.
+
+>>>>>>> origin/master
         // Defining a paint object
         paint = new Paint();
         paint.setTextSize(30);
@@ -256,10 +269,25 @@ public class GameScreen extends Screen {
     }
 
     private void updateGameOver(List<TouchEvent> touchEvents) {
+        //get high score
+        score = prefs.getInt("key", 0);
+
+        //setting high score
+        if (counter > score) {
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putInt("key", counter);
+            editor.commit();
+        }
         int len = touchEvents.size();
         for (int i = 0; i < len; i++) {
             TouchEvent event = touchEvents.get(i);
             if (event.type == TouchEvent.TOUCH_DOWN) {
+                if(event.x > 200 && event.x < 600 && event.y > 1100 && event.y < 1200) {
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putInt("key", 0);
+                    editor.commit();
+                    counter = 0;
+                }
                 if (event.x > 200 && event.x < 600 && event.y > 800
                         && event.y < 1000) {
                     nullify();
@@ -356,22 +384,14 @@ public class GameScreen extends Screen {
 
     private void drawGameOverUI() {
         Graphics g = game.getGraphics();
-        //getting preferences
-        SharedPreferences prefs = ((AndroidGame)super.game).getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
-        int score = prefs.getInt("key", 0); //0 is the default value if nothing is found.
 
         g.drawRect(0, 0, 810, 1300, Color.BLACK);
         g.drawString("GAME OVER.", 400, 300, paint);
         g.drawString("Your Score Is: "+counter, 400, 350, paint);
         g.drawString("High Score: " + score, 400, 400, paint);
         g.drawString("To Return to Menu, Tap Below", 400, 600, paint);
-
-        //setting high score
-        if (counter > score) {
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putInt("key", counter);
-            editor.commit();
-        }
+        g.drawString("Play Again", 400, 900, paint);
+        g.drawString("Reset Scores", 400,1150, paint);
     }
 
     @Override
