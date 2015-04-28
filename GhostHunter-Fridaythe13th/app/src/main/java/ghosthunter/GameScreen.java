@@ -1,3 +1,10 @@
+// The framework we used are from kilobolt.com
+// It is an open source framework
+// http://www.kilobolt.com/day-7-creating-an-android-game-from-start-to-finish.html
+
+// Team ID: 104 -13
+// Members: Adam Guo hg5nq, Emily Zhou ez4cc, Maurice Wong, mzw7af, Christian Lastova, cnl4fh
+
 package ghosthunter;
 
 /**
