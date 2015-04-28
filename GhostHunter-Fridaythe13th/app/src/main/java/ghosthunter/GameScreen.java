@@ -48,12 +48,10 @@ public class GameScreen extends Screen {
     int mod_value;
     int ghost_speed;
     Paint paint;
-<<<<<<< HEAD
     private boolean proximity;
-=======
     SharedPreferences prefs;
     int score;
->>>>>>> origin/master
+
 
     public GameScreen(Game game) {
         super(game);
@@ -66,15 +64,13 @@ public class GameScreen extends Screen {
         this.counter = 0;
         this.ghost_speed = 2;
         this.mod_value = 200;
-<<<<<<< HEAD
         proximity = false;
-=======
+
 
         //getting the high score
         prefs = ((AndroidGame)super.game).getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
         score = prefs.getInt("key", 0); //0 is the default value if nothing is found.
 
->>>>>>> origin/master
         // Defining a paint object
         paint = new Paint();
         paint.setTextSize(30);
@@ -283,20 +279,20 @@ public class GameScreen extends Screen {
         }
 
 
-        for(PowerUp powerUp : powerUps){
-            if(human.getHumanBox().intersect(powerUp.getPowerBox())){
+        for(int i = 0; i < powerUps.size(); i++){
+            if(human.getHumanBox().intersect(powerUps.get(i).getPowerBox())){
                 Log.d("power up", "picked up");
-                if(powerUp.getType() == 0){
-                    powerUp.clear(ghosts);
-                    powerUps.remove(powerUp);
-                } else if(powerUp.getType() == 1){
+                if(powerUps.get(i).getType() == 0){
+                    powerUps.get(i).clear(ghosts);
+                    powerUps.remove(powerUps.get(i));
+                } else if(powerUps.get(i).getType() == 1){
                     if(human.getFourDirections() == true){
                         fireCounter = 0;
-                        powerUps.remove(powerUp);
+                        powerUps.remove(powerUps.get(i));
                     }
                     if(human.getFourDirections() == false) {
-                        powerUp.fourDirections(human);
-                        powerUps.remove(powerUp);
+                        powerUps.get(i).fourDirections(human);
+                        powerUps.remove(powerUps.get(i));
                     }
                 }
              
