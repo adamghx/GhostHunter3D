@@ -51,10 +51,6 @@ public class GameScreen extends Screen {
     private boolean proximity;
     SharedPreferences prefs;
     int score;
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 
     public GameScreen(Game game) {
         super(game);
@@ -68,10 +64,6 @@ public class GameScreen extends Screen {
         this.ghost_speed = 2;
         this.mod_value = 200;
         proximity = false;
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 
         //getting the high score
         prefs = ((AndroidGame)super.game).getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
