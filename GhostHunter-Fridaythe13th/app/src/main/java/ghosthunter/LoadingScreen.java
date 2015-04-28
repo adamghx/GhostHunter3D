@@ -5,6 +5,7 @@ import android.graphics.Paint;
 
 import framework.Game;
 import framework.Graphics;
+import framework.Image;
 import framework.Screen;
 import framework.Graphics.ImageFormat;
 import framework_implementation.AndroidGraphics;
@@ -36,10 +37,12 @@ public class LoadingScreen extends Screen {
         Assets.fire_button = g.newImage("button.png", ImageFormat.RGB565);
         Assets.ghost = g.newImage("ghost_front.png", ImageFormat.RGB565);
         Assets.projectile = g.newImage("projectile.png", ImageFormat.RGB565);
-
         Assets.heart = g.newImage("heart.png",ImageFormat.RGB565);
-
         Assets.logo = g.newImage("logo.png", ImageFormat.RGB565);
+        Assets.clear_bomb = g.newImage("clear_bomb.png", ImageFormat.RGB565);
+        Assets.four_direction = g.newImage("four_direction.png", ImageFormat.RGB565);
+        Assets.mine = g.newImage("mine.png", ImageFormat.RGB565);
+        Assets.fleeing_ghost = g.newImage("fleeing_ghost.png", ImageFormat.RGB565);
 
         resize();
         try{
@@ -84,6 +87,10 @@ public class LoadingScreen extends Screen {
         Assets.human.scaleImage(94,192);
         Assets.heart.scaleImage(40, 40);
         Assets.logo.scaleImage(150, 150);
+        Assets.clear_bomb.scaleImage(50,50);
+        Assets.four_direction.scaleImage(50,50);
+        Assets.mine.scaleImage(50,50);
+        Assets.fleeing_ghost.scaleImage(50,50);
     }
 
     @Override

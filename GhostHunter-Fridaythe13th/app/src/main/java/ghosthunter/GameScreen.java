@@ -365,7 +365,7 @@ public class GameScreen extends Screen {
         }
         //Drawing all power ups
         for(PowerUp powerUp : powerUps){
-            g.drawImage(Assets.projectile, powerUp.getCenterX(), powerUp.getCenterY());
+            g.drawImage(powerUp.getImage(), powerUp.getCenterX(), powerUp.getCenterY());
         }
 
         // Example:

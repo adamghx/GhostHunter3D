@@ -14,14 +14,20 @@ public class PowerUp {
     private int type, centerX, centerY;
     private Rect powerBox;
     private Image powerUp;
-    final int CLEAR_BOMB = 1;
-    final int FLEE_GHOST = 2;
+    final int CLEAR_BOMB = 0;
+    final int FOUR_DIRECTION = 1;
 
     public PowerUp(int centerX, int centerY){
         this.type = (int)(Math.random()*2);
         this.centerX = centerX;
         this.centerY = centerY;
-        this.powerUp = Assets.projectile;
+
+        if(this.type == 0) {
+           this.powerUp = Assets.clear_bomb;
+        }
+        if(this.type == 1) {
+            this.powerUp = Assets.four_direction;
+        }
         this.powerBox = new Rect(centerX, centerY, centerX+powerUp.getWidth(), centerY+powerUp.getHeight());
 
     }
@@ -51,4 +57,5 @@ public class PowerUp {
     public int getType(){
         return this.type;
     }
+    public Image getImage() { return this.powerUp; }
 }
