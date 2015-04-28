@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
@@ -17,6 +19,7 @@ import framework.Graphics;
 import framework.Image;
 import framework.Screen;
 import framework.Input.TouchEvent;
+import framework_implementation.AndroidGame;
 import framework_implementation.AndroidGraphics;
 
 //Android Screen Dimensions: 800dp X 1280dp
@@ -335,10 +338,22 @@ public class GameScreen extends Screen {
 
     private void drawGameOverUI() {
         Graphics g = game.getGraphics();
+        //getting preferences
+        SharedPreferences prefs = ((AndroidGame)super.game).getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
+        int score = prefs.getInt("key", 0); //0 is the default value if nothing is found.
+
         g.drawRect(0, 0, 810, 1300, Color.BLACK);
         g.drawString("GAME OVER.", 400, 300, paint);
         g.drawString("Your Score Is: "+counter, 400, 350, paint);
+        g.drawString("High Score: " + score, 400, 400, paint);
         g.drawString("To Return to Menu, Tap Below", 400, 600, paint);
+
+        //setting high score
+        if (counter > score) {
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putInt("key", counter);
+            editor.commit();
+        }
     }
 
     @Override
