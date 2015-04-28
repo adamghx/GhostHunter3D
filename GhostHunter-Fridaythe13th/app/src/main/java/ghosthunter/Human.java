@@ -26,6 +26,7 @@ public class Human {
     private static final int STATE_RIGHT = 2;
     private static final int STATE_DOWN = 3;
     private static final int STATE_LEFT = 4;
+    private boolean fourDirections=false;
 
     public Human() {
         this.centerX = 250;
@@ -60,6 +61,13 @@ public class Human {
     public void fire() {
         Projectile p = new Projectile(this.savedMovingState, this.centerX + (human.getWidth()/2), this.centerY + (human.getHeight()/2));
         projectiles.add(p);
+    }
+
+    public void fireFour() {
+        for(int i = 1; i < 5; i++) {
+            Projectile p = new Projectile(i, this.centerX + (human.getWidth() / 2), this.centerY + (human.getHeight() / 2));
+            projectiles.add(p);
+        }
     }
 
     //These are the accessors
@@ -118,4 +126,8 @@ public class Human {
     public void setMovingDown(boolean b) {
         isMovingDown = b;
     }
+
+    public void setFourDirections(boolean b) { fourDirections = b; }
+
+    public boolean getFourDirections(){ return this.fourDirections; }
 }

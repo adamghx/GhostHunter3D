@@ -37,11 +37,12 @@ public class GameScreen extends Screen {
 
     private static Human human;
     private ArrayList<Ghost> ghosts;
+    private ArrayList<PowerUp> powerUps;
     private Joystick joystick;
     private Rect joystickSpace;
     private Rect buttonSpace;
     private Rect screenSpace;
-    private int counter;
+    private int counter, fireCounter;
     int joystickMovement = 0;
     int livesLeft = 3;
     int mod_value;
@@ -80,6 +81,7 @@ public class GameScreen extends Screen {
         paint.setTextAlign(Paint.Align.CENTER);
         paint.setAntiAlias(true);
         paint.setColor(Color.WHITE);
+        this.powerUps = new ArrayList<PowerUp>();
 
     }
 
@@ -166,7 +168,15 @@ public class GameScreen extends Screen {
             if (event.type == TouchEvent.TOUCH_DOWN) {
                 if (buttonSpace.contains(event.x, event.y)) {
                     Log.d("projectile" , "fire");
-                    human.fire();
+                    if(human.getFourDirections() == true && fireCounter <= 30){
+                        human.fireFour();
+                        fireCounter += 1;
+                        Log.d("fourDirections", "firing");
+                    } else {
+                        human.setFourDirections(false);
+                        human.fire();
+                        fireCounter = 0;
+                    }
                 }
             }
 
@@ -237,22 +247,59 @@ public class GameScreen extends Screen {
 
             ghost.update();
         }
+
+        //Checking projectile collision with ghosts
         for(int p = 0; p < human.getProjectiles().size(); p++) {
             boolean remove = false;
             human.getProjectiles().get(p).update();
 
+            //Checking for projectile-ghost collision
             for(int ghostnum = 0; ghostnum < ghosts.size(); ghostnum++){
                 if (ghosts.get(ghostnum).getGhostBox().intersect(human.getProjectiles().get(p).getProjectileBox())) {
+
+                    //Putting down power ups
+                    int rand = (int)(Math.random()*10);
+                    if(rand == 2){
+                        powerUps.add(new PowerUp(ghosts.get(ghostnum).getCenterX(), ghosts.get(ghostnum).getCenterY()));
+                    }
+                    if(powerUps.size() > 4){
+                        powerUps.remove(0);
+                    }
+
+                    //Removing ghosts that are hit by projections
                     ghosts.remove(ghosts.get(ghostnum));
                     remove = true;
                 }
             }
+
             if (!human.getProjectiles().get(p).getProjectileBox().intersect(screenSpace)) {
                 remove = true;
             }
 
             if(remove) {
                 human.getProjectiles().remove(human.getProjectiles().get(p));
+            }
+
+        }
+
+
+        for(PowerUp powerUp : powerUps){
+            if(human.getHumanBox().intersect(powerUp.getPowerBox())){
+                Log.d("power up", "picked up");
+                if(powerUp.getType() == 0){
+                    powerUp.clear(ghosts);
+                    powerUps.remove(powerUp);
+                } else if(powerUp.getType() == 1){
+                    if(human.getFourDirections() == true){
+                        fireCounter = 0;
+                        powerUps.remove(powerUp);
+                    }
+                    if(human.getFourDirections() == false) {
+                        powerUp.fourDirections(human);
+                        powerUps.remove(powerUp);
+                    }
+                }
+             
             }
         }
 
@@ -321,6 +368,10 @@ public class GameScreen extends Screen {
         for(int i = 0; i<livesLeft; i++) {
             g.drawImage(Assets.heart, xcoor, 50);
             xcoor+= 60;
+        }
+        //Drawing all power ups
+        for(PowerUp powerUp : powerUps){
+            g.drawImage(Assets.projectile, powerUp.getCenterX(), powerUp.getCenterY());
         }
 
         // Example:
